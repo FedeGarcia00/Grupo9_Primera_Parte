@@ -1,0 +1,9 @@
+package modelo;
+
+public class ServicioExtraMonitoreo 
+{
+	private boolean monitoreoCamara;
+	private boolean botonAntipanico;
+	private boolean movilAcompanamiento;
+	
+}

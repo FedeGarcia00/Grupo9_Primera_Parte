@@ -1,0 +1,27 @@
+package modelo;
+
+public class Extra_MonitoreoCamara extends ServicioExtraMonitoreo
+{
+	private int horarioEntrada; // cambiar a un mejor tipo
+	private int horarioSalida;
+	private int cantCamaras;
+	private final int valor = 3000;
+	
+	public Extra_MonitoreoCamara(boolean monitoreoCamara, boolean botonAntipanico, boolean movilAcompanamiento, int he, int hs, int cc) {
+		super(monitoreoCamara, botonAntipanico, movilAcompanamiento);
+		// TODO Auto-generated constructor stub
+		
+		this.horarioEntrada = he;
+		this.horarioSalida = hs;
+		this.cantCamaras = cc;
+	}
+
+	@Override
+	public float valorExtra() {
+		// TODO Auto-generated method stub
+		return valor * this.cantCamaras;
+	}
+	
+	
+	
+}

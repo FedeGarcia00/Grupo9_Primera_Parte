@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;modelo.Direccion&apos; to &apos;Domicilio&apos;&#x0D;&#x0A;- Original project: &apos;TP&apos;&#x0D;&#x0A;- Original element: &apos;modelo.Direccion&apos;&#x0D;&#x0A;- Renamed element: &apos;modelo.Domicilio&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Direccion&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;modelo{Direccion.java[Direccion" matchStrategy="1" name="Domicilio" qualified="false" references="true" similarDeclarations="false" stamp="1682296069531" textual="false" version="1.0"/>
+</session>
