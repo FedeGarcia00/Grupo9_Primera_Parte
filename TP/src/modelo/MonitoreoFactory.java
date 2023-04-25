@@ -4,11 +4,7 @@ public class MonitoreoFactory  {
 	
 	//Aca atributos
 	
-	
 	//Constructor
-	
-	
-	
 
 	public static IMonitoreo getMonitoreo(String servicio, String pago) {
 		
