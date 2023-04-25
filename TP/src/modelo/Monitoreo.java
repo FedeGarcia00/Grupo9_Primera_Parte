@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Monitoreo 
+public abstract class Monitoreo implements IMonitoreo
 {
 	private Domicilio domicilio;
 	public static int siguienteId=0;
