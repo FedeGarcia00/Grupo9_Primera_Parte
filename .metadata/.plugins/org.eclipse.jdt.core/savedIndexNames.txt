@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\Wen\Desktop\TP_Progra3\.metadata\.plugins\org.eclipse.jdt.core
-1481474165.index
-794543970.index
-1865797976.index
