@@ -24,6 +24,5 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="TPFinal/TPFinal.jpr"/></hash>
-      <hash><url n="URL" path="TPFinal-Test/TPFinal-Test.jpr"/></hash>
    </list>
 </jws:workspace>

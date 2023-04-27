@@ -1,5 +1,5 @@
 package modelo;
 
-public abstract class PromoPlatino {
+public class PromoPlatino extends APromo{
 
 }
