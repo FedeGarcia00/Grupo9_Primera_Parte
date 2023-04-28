@@ -1433,7 +1433,7 @@
       <property xmi:type='DI:Property' key='excludeAttrFilter' value=''/>
       <property xmi:type='DI:Property' key='excludeMethodFilter' value=''/>
       <property xmi:type='DI:Property' key='showOperations' value='true'/>
-      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDI;;modelo;;###;;IMonitoreo' presentation='SYMBOLIC'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDI;;modelo;;###;;IFactura' presentation='SYMBOLIC'/>
       <size xmi:type='DI:Dimension' height='120.0' width='120.0'/>
     </contained>
     <contained xmi:type='DI:GraphNode' xmi:id='id8594824e-37d7-42f3-916f-51d103610081'>
@@ -3535,7 +3535,7 @@
       <property xmi:type='DI:Property' key='EdgeType' value='1'/>
       <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
       <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;Monitoreo;;modelo.IMonitoreo'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;Monitoreo;;modelo.IFactura'/>
       <waypoint xmi:type='DI:Point' x='1893.333251953125' y='235.6846923828125'/>
       <waypoint xmi:type='DI:Point' x='1893.333251953125' y='185.48468017578125'/>
       <waypoint xmi:type='DI:Point' x='1277.800048828125' y='185.48468017578125'/>
@@ -3623,7 +3623,7 @@
       <property xmi:type='DI:Property' key='EdgeType' value='1'/>
       <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
       <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;Abonado;;modelo.IMonitoreo'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;Abonado;;modelo.IFactura'/>
       <waypoint xmi:type='DI:Point' x='1477.5' y='235.6846923828125'/>
       <waypoint xmi:type='DI:Point' x='1477.5' y='215.48468017578125'/>
       <waypoint xmi:type='DI:Point' x='1237.800048828125' y='215.48468017578125'/>
@@ -3699,7 +3699,7 @@
       <property xmi:type='DI:Property' key='EdgeType' value='1'/>
       <property xmi:type='DI:Property' key='lineWidth' value='1.0'/>
       <property xmi:type='DI:Property' key='font' value='SansSerif,plain,11'/>
-      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;DecoratorPago;;modelo.IMonitoreo'/>
+      <semanticModel xmi:type='DI:CoreSemanticModelBridge' element='JAVA:JIDIMP;;modelo;;DecoratorPago;;modelo.IFactura'/>
       <waypoint xmi:type='DI:Point' x='553.6666870117188' y='235.6846923828125'/>
       <waypoint xmi:type='DI:Point' x='553.6666870117188' y='200.48468017578125'/>
       <waypoint xmi:type='DI:Point' x='1197.800048828125' y='200.48468017578125'/>

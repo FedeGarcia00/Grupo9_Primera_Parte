@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Monitoreo implements IMonitoreo
+public abstract class Monitoreo implements IFactura
 {
 	protected Domicilio domicilio;
 	private static int siguienteId=0;
@@ -11,8 +11,7 @@ public abstract class Monitoreo implements IMonitoreo
 	protected int cantBotones;
 	protected boolean movilAcompanamiento;
 	protected final float precioAcompanamiento = 7500;
-	protected float precioServicio;
-	protected float precioFinal;
+	protected float precio;
 	protected String promo;
 	
 	
@@ -27,7 +26,7 @@ public abstract class Monitoreo implements IMonitoreo
 	}
 
 
-	public float getPrecioFinal(){
+	public float getPrecio(){
 		return valorServicioCamara()+valorServicioBoton()+valorServicioAcompanamiento();
 	}
 

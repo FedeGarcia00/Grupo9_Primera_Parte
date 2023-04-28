@@ -27,7 +27,7 @@ public class Empresa
 		listaAbonados.add(abonado);
 	}
 
-	public Abonado getAbonado(dni)
+	public Abonado getAbonado(String dni)
 	{
 		Abonado respuesta = null;
 

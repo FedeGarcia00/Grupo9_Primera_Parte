@@ -6,30 +6,16 @@ public class MonitoreoFactory  {
 	
 	//Constructor
 
-	public static IMonitoreo getMonitoreo(String servicio, String pago) {
-		
-		IMonitoreo encapsulado= null ;
-		IMonitoreo respuesta = null ;
+	public static IFactura crearMonitoreo(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, String promo) 
+	{	
+		IFactura encapsulado= null ;
+		IFactura respuesta = null ;
 	   
 		if (servicio.equalsIgnoreCase("comercio"))
-	        encapsulado = new M_Comercio(atributos);
-	    else if (servicio.equalsIgnoreCase("vivienda"))
-	        encapsulado = new M_Vivienda(atributos);
-
-	    if (encapsulado != null)
-	    {
-	        if (pago.equalsIgnoreCase("efectivo"))
-	            respuesta = new DecoratorPagoEfectivo(encapsulado);
-	        else if (pago.equalsIgnoreCase("cheque"))
-	            respuesta = new DecoratorPagoCheque(encapsulado);
-	        else if (pago.equalsIgnoreCase("tarjeta"))
-	            respuesta = new DecoratorPagoTarjeta(encapsulado);
-
-	    }
-
+	        encapsulado = new M_Comercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
+	    else 
+			if (servicio.equalsIgnoreCase("vivienda"))
+	        	encapsulado = new M_Vivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
 	    return respuesta;
-		//hola
 	}
-
-
 }
