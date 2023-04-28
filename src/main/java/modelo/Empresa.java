@@ -20,4 +20,17 @@ public class Empresa
 		
 		return instancia;
 	}
+
+	public void agregarAbonado(String tipo, String nombre, String dni)
+	{	
+		Abonado abonado = AbonadoFactory.crearAbonado(tipo, nombre, dni); 
+		listaAbonados.add(abonado);
+	}
+
+	public Abonado getAbonado(dni)
+	{
+		Abonado respuesta = null;
+
+		return respuesta;
+	}
 }

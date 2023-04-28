@@ -13,14 +13,16 @@ public abstract class Monitoreo implements IMonitoreo
 	protected final float precioAcompanamiento = 7500;
 	protected float precioServicio;
 	protected float precioFinal;
+	protected String promo;
 	
 	
-	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
+	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String promo) 
 	{
 		this.domicilio = dom;
 		this.cantCamaras = cantCamaras;
 		this.cantBotones = cantBotones;
 		this.movilAcompanamiento = movilAcompanamiento;
+		this.promo = promo;
 		this.id = ++siguienteId;
 	}
 

@@ -10,11 +10,12 @@ public static void main(String[] args) {
 }
     Empresa empresa = Empresa.getInstancia()
     
-    empresa.agregarAbonado("PersonaJuridica", "Juancito", "20456789");
-    empresa.agregarAbonado("PersonaFisica", "Pablito", "30123456");
+    empresa.agregarAbonado("PersonaJuridica", "Juancito", "20456789", "tarjeta");
+    empresa.agregarAbonado("PersonaFisica", "Pablito", "30123456", "cheque");
 
-    Abonado abonado = empresa.getAbonado(20456789);
+    Abonado abonado = empresa.getAbonado("20456789");
 
-    abonado.agregarMonitoreo("Funes 1234", 2, 3, true, "comercio", "tarjeta");
-    abonado.agregarMonitoreo("Chaco 3456", 4, 1, false, "vivienda", "cheque");
+    abonado.agregarMonitoreo("Funes 1234", 2, 3, true, "comercio", "dorada");
+    abonado.agregarMonitoreo("Chaco 3456", 4, 1, false, "vivienda", "platino");
+    abonado.agregarMonitoreo("San Juan 3487", 1, 0, false, "vivienda", "");
 }

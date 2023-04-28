@@ -3,5 +3,9 @@ package modelo;
 import java.util.ArrayList;
 
 public class PersonaFisica extends Abonado {
-	private ArrayList<Monitoreo> servicios = new ArrayList<Monitoreo>();
+
+	public PersonaFisica(String nombre, String dni){
+		this.nombre = nombre;
+		this.dni = dni;
+	}
 }
