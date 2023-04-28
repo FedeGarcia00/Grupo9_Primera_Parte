@@ -2,15 +2,18 @@ package modelo;
 
 public abstract class Monitoreo implements IMonitoreo
 {
-	private Domicilio domicilio;
-	public static int siguienteId=0;
+	protected Domicilio domicilio;
+	private static int siguienteId=0;
 	private int id;
-	private final float precioCamara = 3000;
-	private int cantCamaras;
-	private final float precioBoton = 2000;
-	private int cantBotones;
-	private boolean movilAcompanamiento;
-	private int precioFinal;
+	protected final float precioCamara = 3000;
+	protected int cantCamaras;
+	protected final float precioBoton = 2000;
+	protected int cantBotones;
+	protected boolean movilAcompanamiento;
+	protected final float precioAcompanamiento = 7500;
+	protected float precioServicio;
+	protected float precioFinal;
+	
 	
 	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
 	{
@@ -21,7 +24,11 @@ public abstract class Monitoreo implements IMonitoreo
 		this.id = ++siguienteId;
 	}
 
-	
+
+	public float getPrecioFinal(){
+		return valorServicioCamara()+valorServicioBoton()+valorServicioAcompanamiento();
+	}
+
 	public float valorServicioCamara()
 	{
 		return this.precioCamara * this.cantCamaras;
@@ -36,8 +43,6 @@ public abstract class Monitoreo implements IMonitoreo
 	{
 		return this.movilAcompanamiento ? 7500 : 0;
 	}
-	
-	public abstract float valorServicioTotal();
 	
 	public float getPrecioCamara() {
 		return precioCamara;

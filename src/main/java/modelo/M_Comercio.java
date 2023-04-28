@@ -6,12 +6,8 @@ public class M_Comercio extends Monitoreo
 	public M_Comercio(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
 	{
 		super(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
-		// TODO Auto-generated constructor stub
+		this.precioFinal = super.getPrecioFinal() + this.valorBase;
 	}
 
-	@Override
-	public float valorServicioTotal() {
-		// TODO Auto-generated method stub
-		return this.valorBase + super.valorServicioAcompanamiento()+super.valorServicioBoton()+super.valorServicioCamara();
-	}
+
 }
