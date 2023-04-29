@@ -2,57 +2,71 @@ package modelo;
 
 public abstract class Monitoreo implements IFactura
 {
-	protected Domicilio domicilio;
-	private static int siguienteId=0;
+	private static final double PRECIO_CAMARA = 3000;
+	private static final double PRECIO_BOTON = 2000;
+	private static final double PRECIO_ACOMPANAMIENTO = 7500;
+	
+	private static int siguienteId = 0;
+	
+	private Domicilio domicilio;
 	private int id;
-	protected final float precioCamara = 3000;
-	protected int cantCamaras;
-	protected final float precioBoton = 2000;
-	protected int cantBotones;
-	protected boolean movilAcompanamiento;
-	protected final float precioAcompanamiento = 7500;
-	protected float precio;
-	protected String promo;
+	private int cantCamaras;
+	private int cantBotones;
+	private boolean movilAcompanamiento;
 	
 	
-	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String promo) 
+	
+	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
 	{
 		this.domicilio = dom;
 		this.cantCamaras = cantCamaras;
 		this.cantBotones = cantBotones;
 		this.movilAcompanamiento = movilAcompanamiento;
-		this.promo = promo;
 		this.id = ++siguienteId;
 	}
 
-
-	public float getPrecio(){
-		return valorServicioCamara()+valorServicioBoton()+valorServicioAcompanamiento();
-	}
-
-	public float valorServicioCamara()
+	//Template
+	public double getPrecio(IPromocion promo)
 	{
-		return this.precioCamara * this.cantCamaras;
+		double precio = this.valorServicioCamara() + this.valorServicioBoton() + this.valorServicioAcompanamiento();
+		
+		return this.aplicarDescuento(precio + this.getPrecioBase(), promo);
 	}
 	
-	public float valorServicioBoton()
+	public double getPrecio()
 	{
-		return this.precioBoton * this.cantBotones;
+		return this.getPrecio(null);
 	}
 	
-	public float valorServicioAcompanamiento()
+	
+	public abstract double aplicarDescuento(double monto, IPromocion promo);
+	
+	public abstract double getPrecioBase();
+	
+
+	public double valorServicioCamara()
+	{
+		return Monitoreo.PRECIO_CAMARA * this.cantCamaras;
+	}
+	
+	public double valorServicioBoton()
+	{
+		return Monitoreo.PRECIO_BOTON * this.cantBotones;
+	}
+	
+	public double valorServicioAcompanamiento()
 	{
 		return this.movilAcompanamiento ? 7500 : 0;
 	}
 	
-	public float getPrecioCamara() {
-		return precioCamara;
+	public double getPrecioCamara() {
+		return Monitoreo.PRECIO_CAMARA;
 	}
 	public int getCantCamaras() {
 		return cantCamaras;
 	}
-	public float getPrecioBoton() {
-		return precioBoton;
+	public double getPrecioBoton() {
+		return Monitoreo.PRECIO_BOTON;
 	}
 	public int getCantBotones() {
 		return cantBotones;

@@ -2,11 +2,12 @@ package modelo;
 
 import java.util.ArrayList;
 
-// con Singleton
+//Singleton
 public class Empresa 
 {
 	private static Empresa instancia = null;
 	public ArrayList<Abonado> listaAbonados = new ArrayList<Abonado>();	
+	private IPromocion promo = null;
 	
 	private Empresa()
 	{
@@ -33,4 +34,14 @@ public class Empresa
 
 		return respuesta;
 	}
+
+	public IPromocion getPromo() {
+		return promo;
+	}
+
+	public void setPromo(IPromocion promo) {
+		this.promo = promo;
+	}
+	
+	
 }

@@ -6,16 +6,16 @@ public class MonitoreoFactory  {
 	
 	//Constructor
 
-	public static IFactura crearMonitoreo(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, String promo) 
+	public static IFactura crearMonitoreo(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio) 
 	{	
 		IFactura encapsulado= null ;
 		IFactura respuesta = null ;
 	   
 		if (servicio.equalsIgnoreCase("comercio"))
-	        encapsulado = new M_Comercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
+	        encapsulado = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
 	    else 
 			if (servicio.equalsIgnoreCase("vivienda"))
-	        	encapsulado = new M_Vivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
+	        	encapsulado = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
 	    return respuesta;
 	}
 }
