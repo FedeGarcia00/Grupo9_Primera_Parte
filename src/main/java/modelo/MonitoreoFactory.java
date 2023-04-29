@@ -20,9 +20,9 @@ public class MonitoreoFactory {
 			boolean movilAcompanamiento, String servicio, Promocion promo) {
 		Monitoreo respuesta = null;
 		if (servicio.equalsIgnoreCase("comercio"))
-			respuesta = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+			respuesta = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
 		else if (servicio.equalsIgnoreCase("vivienda"))
-			respuesta = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+			respuesta = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento, promo);
 		return respuesta;
 	}
 }

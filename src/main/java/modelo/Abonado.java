@@ -8,14 +8,16 @@ public abstract class Abonado {
 	private ArrayList<String> listaDomicilios = new ArrayList<String>();
 	private ArrayList<Monitoreo> listaMonitoreos = new ArrayList<Monitoreo>();
 
-	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, Promocion promo) {
+	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento,
+			String servicio, Promocion promo) {
 		Monitoreo monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento,
 				servicio, promo);
 		listaMonitoreos.add(monitoreo);
 		listaDomicilios.add(domicilio);
 	}
 
-	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio) {
+	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento,
+			String servicio) {
 		Monitoreo monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento,
 				servicio);
 		listaMonitoreos.add(monitoreo);

@@ -3,7 +3,7 @@ package modelo;
 import java.util.Iterator;
 
 public abstract class DecoratorPago implements IFactura {
-	
+
 	private IFactura encapsulado;
 	double precioFinal;
 
@@ -11,9 +11,8 @@ public abstract class DecoratorPago implements IFactura {
 		super();
 		this.encapsulado = encapsulado;
 	}
-	
-	public double getPrecioFinal()
-	{
+
+	public double getPrecioFinal() {
 		return this.precioFinal;
 	}
 
@@ -30,23 +29,32 @@ public abstract class DecoratorPago implements IFactura {
 	}
 
 	@Override
-    public String toString() {
-        // Nombre abonado y dni
-        // medio de pago
-        // For eac precio de cada servicio, 
-        // precio total con y sin descuento
-        Abonado abonado = getAbonado();
+	public String toString() {
+		// Nombre abonado y dni
+		// medio de pago
+		// For eac precio de cada servicio,
+		// precio total con y sin descuento
+		Abonado abonado = getAbonado();
 		String factura = "";
-        Iterator<Monitoreo> iterator = abonado.getListaMonitoreos().iterator();
-        
-        factura += "Nombre: " + abonado.getNombre() + "\n" + "Dni: " + abonado.getDni() + "\n";
-        
-        while (iterator.hasNext()) {
-            Monitoreo monitoreo = iterator.next();
-            factura += "[" + monitoreo.getId() + "] - Direccion: " + monitoreo.getDomicilio() + " $" + monitoreo.getPrecio() + "\n";
-        }
-        factura += "Precio sin descuento: " + encapsulado.getPrecio() + "\n";
+		Iterator<Monitoreo> iterator = abonado.getListaMonitoreos().iterator();
+
+		factura += "Nombre: " + abonado.getNombre() + "\n" + "Dni: " + abonado.getDni() + "\n";
+
+		while (iterator.hasNext()) {
+			Monitoreo monitoreo = iterator.next();
+			factura += "[" + monitoreo.getId() + "] - Direccion: " + monitoreo.getDomicilio() + " $"
+					+ monitoreo.getPrecio() + "\n";
+		}
+		factura += "Precio sin descuento: " + encapsulado.getPrecio() + "\n";
 		factura += "Precio con descuento: " + getPrecioFinal();
-        return factura;
-    }
+		return factura;
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		DecoratorPago clonado = null;
+		clonado = (DecoratorPago) super.clone();
+		clonado.encapsulado = (IFactura) this.encapsulado.clone();
+		return clonado;
+	}
 }

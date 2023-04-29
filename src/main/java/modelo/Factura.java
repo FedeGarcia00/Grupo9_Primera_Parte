@@ -1,20 +1,19 @@
 package modelo;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Factura implements IFactura {
 
-    Abonado abonado;
-    double precio;
+    protected Abonado abonado;
+    protected double precio;
 
     public Factura(Abonado abonado) {
         this.abonado = abonado;
         this.precio = calculaPrecio();
     }
 
-    public String getAbonado() {
-        return ("Nombre: " + this.abonado.getNombre() + ", DNI: " + this.abonado.getDni());
+    public Abonado getAbonado() {
+        return this.abonado;
     }
 
     public double getPrecio() {
@@ -43,6 +42,10 @@ public class Factura implements IFactura {
         return precio;
     }
 
-
-
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Factura clonado = null;
+        clonado = (Factura) super.clone();
+        return clonado;
+    }
 }

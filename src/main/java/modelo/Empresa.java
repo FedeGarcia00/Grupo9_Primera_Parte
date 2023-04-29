@@ -3,35 +3,25 @@ package modelo;
 import java.util.ArrayList;
 
 //Singleton
-public class Empresa 
-{
+public class Empresa {
 	private static Empresa instancia = null;
-	public ArrayList<Abonado> listaAbonados = new ArrayList<Abonado>();	
-	public ArrayList<IFactura> listaFacturas = new ArrayList<IFactura>();	
+	public ArrayList<Abonado> listaAbonados = new ArrayList<Abonado>();
+	public ArrayList<IFactura> listaFacturas = new ArrayList<IFactura>();
 	private Promocion promo = null;
-	
-	private Empresa(){
+
+	private Empresa() {
 	}
-	
-	public static Empresa getInstancia() 
-	{
-		if(instancia == null)
+
+	public static Empresa getInstancia() {
+		if (instancia == null)
 			instancia = new Empresa();
-		
+
 		return instancia;
 	}
 
-	public void agregarAbonado(String tipo, String nombre, String dni)
-	{	
-		Abonado abonado = AbonadoFactory.crearAbonado(tipo, nombre, dni); 
+	public void agregarAbonado(String tipo, String nombre, String dni) {
+		Abonado abonado = AbonadoFactory.crearAbonado(tipo, nombre, dni);
 		listaAbonados.add(abonado);
-	}
-
-	public Abonado getAbonado(String dni)
-	{
-		Abonado respuesta = null;
-
-		return respuesta;
 	}
 
 	public Promocion getPromo() {
@@ -43,13 +33,23 @@ public class Empresa
 	}
 
 	public void newFactura(String dni, String metodoPago) {
-		//get abonado con dni
-		Abonado abonado = buscaAbonado(dni);	
+		// get abonado con dni
+		Abonado abonado = getAbonado(dni);
 		IFactura factura = FacturaFactory.crearFactura(abonado, metodoPago);
 		listaFacturas.add(factura);
 	}
-	
-	private Abonado buscaAbonado(String dni){
+
+	public IFactura getFactura(String dni) {
+
+		for (IFactura factura : listaFacturas) {
+			if (factura.getAbonado().getDni().equalsIgnoreCase(dni)) {
+				return factura;
+			}
+		}
+		return null;
+	}
+
+	public Abonado getAbonado(String dni) {
 		Abonado abonadoEncontrado = null;
 
 		for (Abonado abonado : listaAbonados) {
@@ -60,5 +60,5 @@ public class Empresa
 		}
 		return abonadoEncontrado;
 	}
-		
+
 }
