@@ -1,18 +1,16 @@
 package modelo;
 
-public class PromoDorada implements IPromocion
+public class PromoDorada extends Promocion
 {
 	//DD
 	@Override
 	public double getDescuentoVivienda(double monto) {
-		// TODO Auto-generated method stub
-		return monto-1500;
+		return monto - 1500.0;
 	}
 
 	@Override
 	public double getDescuentoComercio(double monto) {
-		// TODO Auto-generated method stub
-		return monto-2500;
+		return monto - 2500.0;
 	}
 
 }

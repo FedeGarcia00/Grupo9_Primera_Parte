@@ -13,6 +13,8 @@ public abstract class Monitoreo implements IFactura
 	private int cantCamaras;
 	private int cantBotones;
 	private boolean movilAcompanamiento;
+
+	private double precio;
 	
 	
 	
@@ -22,24 +24,19 @@ public abstract class Monitoreo implements IFactura
 		this.cantCamaras = cantCamaras;
 		this.cantBotones = cantBotones;
 		this.movilAcompanamiento = movilAcompanamiento;
+		this.precio = getPrecio();
 		this.id = ++siguienteId;
 	}
 
 	//Template
-	public double getPrecio(IPromocion promo)
+	public double getPrecio(Promocion promo)
 	{
 		double precio = this.valorServicioCamara() + this.valorServicioBoton() + this.valorServicioAcompanamiento();
 		
 		return this.aplicarDescuento(precio + this.getPrecioBase(), promo);
 	}
 	
-	public double getPrecio()
-	{
-		return this.getPrecio(null);
-	}
-	
-	
-	public abstract double aplicarDescuento(double monto, IPromocion promo);
+	public abstract double aplicarDescuento(double monto, Promocion promo);
 	
 	public abstract double getPrecioBase();
 	

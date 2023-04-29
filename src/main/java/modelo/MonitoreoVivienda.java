@@ -11,14 +11,12 @@ public class MonitoreoVivienda extends Monitoreo
 	
 	//DD
 	@Override
-	public double aplicarDescuento(double monto, IPromocion promo) {
-		// TODO Auto-generated method stub
+	public double aplicarDescuento(double monto, Promocion promo) {
 		return promo == null ? monto : promo.getDescuentoVivienda(monto);
 	}
 
 	@Override
 	public double getPrecioBase() {
-		// TODO Auto-generated method stub
 		return MonitoreoVivienda.VALOR_BASE;
 	}
 

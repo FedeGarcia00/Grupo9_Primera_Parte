@@ -18,4 +18,6 @@ public static void main(String[] args) {
     abonado.agregarMonitoreo("Funes 1234", 2, 3, true, "comercio", "dorada");
     abonado.agregarMonitoreo("Chaco 3456", 4, 1, false, "vivienda", "platino");
     abonado.agregarMonitoreo("San Juan 3487", 1, 0, false, "vivienda", "");
+
+
 }

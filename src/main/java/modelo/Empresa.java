@@ -7,11 +7,10 @@ public class Empresa
 {
 	private static Empresa instancia = null;
 	public ArrayList<Abonado> listaAbonados = new ArrayList<Abonado>();	
-	private IPromocion promo = null;
+	public ArrayList<DecoratorPago> listaFacturas = new ArrayList<DecoratorPago>();	
+	private Promocion promo = null;
 	
-	private Empresa()
-	{
-		//...
+	private Empresa(){
 	}
 	
 	public static Empresa getInstancia() 
@@ -35,13 +34,30 @@ public class Empresa
 		return respuesta;
 	}
 
-	public IPromocion getPromo() {
-		return promo;
+	public Promocion getPromo() {
+		return this.promo;
 	}
 
-	public void setPromo(IPromocion promo) {
+	public void setPromo(Promocion promo) {
 		this.promo = promo;
 	}
+
+	public void newFactura(String dni, String metodoPago) {
+		//get abonado con dni
+		Abonado abonado = buscaAbonado(dni);	
+		IFactura factura = FacturaFactory.crearFactura(abonado, metodoPago);
+	}
 	
-	
+	private Abonado buscaAbonado(String dni){
+		Abonado abonadoEncontrado = null;
+
+		for (Abonado abonado : listaAbonados) {
+			if (abonado.getDni().equalsIgnoreCase(dni)) {
+				abonadoEncontrado = abonado;
+				break;
+			}
+		}
+		return abonadoEncontrado;
+	}
+		
 }
