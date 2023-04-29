@@ -3,15 +3,10 @@ package modelo;
 import java.util.ArrayList;
 
 public abstract class Abonado {
-	private String nombre;
-	private String dni;
+	protected String nombre;
+	protected String dni;
 	private ArrayList<String> listaDomicilios = new ArrayList<String>();
 	private ArrayList<Monitoreo> listaMonitoreos = new ArrayList<Monitoreo>();
-
-	public Abonado(String nombre, String dni) {
-		this.nombre = nombre;
-		this.dni = dni;
-	}
 
 	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, Promocion promo) {
 		Monitoreo monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento,

@@ -1,5 +1,4 @@
 package modelo;
-import java.util.ArrayList;
 
 public class PersonaJuridica extends Abonado{
 
