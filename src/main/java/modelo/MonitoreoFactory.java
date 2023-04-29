@@ -1,21 +1,28 @@
 package modelo;
 
-public class MonitoreoFactory  {
-	
-	//Aca atributos
-	
-	//Constructor
+public class MonitoreoFactory {
 
-	public static IFactura crearMonitoreo(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio) 
-	{	
-		IFactura encapsulado= null ;
-		IFactura respuesta = null ;
-	   
+	// Aca atributos
+
+	// Constructor
+
+	public static Monitoreo crearMonitoreo(String domicilio, int cantCamaras, int cantBotones,
+			boolean movilAcompanamiento, String servicio) {
+		Monitoreo respuesta = null;
 		if (servicio.equalsIgnoreCase("comercio"))
-	        encapsulado = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
-	    else 
-			if (servicio.equalsIgnoreCase("vivienda"))
-	        	encapsulado = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
-	    return respuesta;
+			respuesta = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+		else if (servicio.equalsIgnoreCase("vivienda"))
+			respuesta = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+		return respuesta;
+	}
+
+	public static Monitoreo crearMonitoreo(String domicilio, int cantCamaras, int cantBotones,
+			boolean movilAcompanamiento, String servicio, Promocion promo) {
+		Monitoreo respuesta = null;
+		if (servicio.equalsIgnoreCase("comercio"))
+			respuesta = new MonitoreoComercio(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+		else if (servicio.equalsIgnoreCase("vivienda"))
+			respuesta = new MonitoreoVivienda(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
+		return respuesta;
 	}
 }

@@ -4,7 +4,7 @@ public class MonitoreoVivienda extends Monitoreo
 {
 	private static final double VALOR_BASE= 8500;
 	
-	public MonitoreoVivienda(Domicilio domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
+	public MonitoreoVivienda(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento) 
 	{
 		super(domicilio, cantCamaras, cantBotones, movilAcompanamiento);
 	}

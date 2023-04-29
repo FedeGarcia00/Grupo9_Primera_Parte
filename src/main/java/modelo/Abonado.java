@@ -2,21 +2,29 @@ package modelo;
 
 import java.util.ArrayList;
 
-public abstract class Abonado implements IFactura
-{
+public abstract class Abonado {
 	private String nombre;
 	private String dni;
-	private ArrayList<Domicilio> listaDomicilios = new ArrayList<Domicilio>();	
+	private ArrayList<String> listaDomicilios = new ArrayList<String>();
 	private ArrayList<Monitoreo> listaMonitoreos = new ArrayList<Monitoreo>();
-	
+
 	public Abonado(String nombre, String dni) {
 		this.nombre = nombre;
 		this.dni = dni;
 	}
 
-	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, String promo) 
-	{
-		IFactura monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento, servicio, promo);
+	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio, Promocion promo) {
+		Monitoreo monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento,
+				servicio, promo);
+		listaMonitoreos.add(monitoreo);
+		listaDomicilios.add(domicilio);
+	}
+
+	public void agregarMonitoreo(String domicilio, int cantCamaras, int cantBotones, boolean movilAcompanamiento, String servicio) {
+		Monitoreo monitoreo = MonitoreoFactory.crearMonitoreo(domicilio, cantCamaras, cantBotones, movilAcompanamiento,
+				servicio);
+		listaMonitoreos.add(monitoreo);
+		listaDomicilios.add(domicilio);
 	}
 
 	public String getNombre() {
@@ -30,8 +38,5 @@ public abstract class Abonado implements IFactura
 	public ArrayList<Monitoreo> getListaMonitoreos() {
 		return listaMonitoreos;
 	}
-	
-	
 
-	
 }

@@ -1,6 +1,5 @@
 package modelo;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Factura implements IFactura {
@@ -12,7 +11,7 @@ public class Factura implements IFactura {
     public Factura(Abonado abonado)
     {
         this.abonado = abonado;
-        this.precio = getPrecio();
+        this.precio = calculaPrecio();
     }
 
     public String getAbonado()
@@ -22,22 +21,29 @@ public class Factura implements IFactura {
 
     public double getPrecio()
     {
+        return this.precio;
+    }
+
+    public double calculaPrecio()
+    {
         double precio = 0;
         int cont = 0;
-        Iterator<Monitoreo> iterador = abonado.getListaMonitoreos().iterator();
+        Iterator<Monitoreo> iterador = abonado.getListaMonitoreos().iterator(); //Si abonado es null, tira null pointer exception, hay q comprobar o tirar excepcion
 
         while (iterador.hasNext()) {
             Monitoreo monitoreo = iterador.next();
             precio += monitoreo.getPrecio();
             cont++;
         }
-        String clase = abonado.getClass();
         
-        if(clase.equalsIgnoreCase("personajuridica"))
+        String clase = abonado.getClass().getName();
+
+        if(clase.equalsIgnoreCase("personajuridica") && cont > 3)
+        {
+            precio /= 2;
+        }
 
         return precio;
-
-        
     }
 
 }

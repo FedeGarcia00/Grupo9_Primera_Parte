@@ -7,7 +7,7 @@ public class Empresa
 {
 	private static Empresa instancia = null;
 	public ArrayList<Abonado> listaAbonados = new ArrayList<Abonado>();	
-	public ArrayList<DecoratorPago> listaFacturas = new ArrayList<DecoratorPago>();	
+	public ArrayList<IFactura> listaFacturas = new ArrayList<IFactura>();	
 	private Promocion promo = null;
 	
 	private Empresa(){
@@ -46,6 +46,7 @@ public class Empresa
 		//get abonado con dni
 		Abonado abonado = buscaAbonado(dni);	
 		IFactura factura = FacturaFactory.crearFactura(abonado, metodoPago);
+		listaFacturas.add(factura);
 	}
 	
 	private Abonado buscaAbonado(String dni){
