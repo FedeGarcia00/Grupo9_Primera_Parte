@@ -1,9 +1,8 @@
 package modelo;
 
-public class PromoPlatino extends Promocion {
+public class PromoPlatino implements IPromocion {
 	public static PromoPlatino instancia = null;
-
-	// DD
+	
 	@Override
 	public double getDescuentoVivienda(double monto) {
 		return monto * 0.7;

@@ -2,10 +2,6 @@ package modelo;
 
 public class AbonadoFactory {
 
-	// Aca atributos
-
-	// Constructor
-
 	public static Abonado crearAbonado(String tipo, String nombre, String dni) {
 
 		Abonado respuesta = null;

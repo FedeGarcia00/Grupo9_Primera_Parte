@@ -1,5 +1,9 @@
 package modelo;
-
+/**
+ * Clase que crea instancias de Monitoreo cuando se aplica alguna promición o cuando no las hay. <br>
+ * Tiene métodos que calculan el precio del servicio contratado aplicando el descuento de la promoción 
+ * o sin aplicar el descuento. <br>
+ */
 public abstract class Monitoreo {
 	private static final double PRECIO_CAMARA = 3000;
 	private static final double PRECIO_BOTON = 2000;
@@ -7,45 +11,40 @@ public abstract class Monitoreo {
 
 	private static int siguienteId = 0;
 
-	private String domicilio;
+	private Domicilio domicilio;
 	private int id;
 	private int cantCamaras;
 	private int cantBotones;
 	private boolean movilAcompanamiento;
-	private double precio;
-
-	public Monitoreo(String dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento, Promocion promo) {
+	private IPromocion promo;
+	
+	/**
+	 Crea una nueva instancia de Monitoreo con los parámetros especificados.<br>
+	 *@param dom El domicilio del abonado que estara  sistema de monitoreo.<br> 
+	 *@param cantCamaras La cantidad de cámaras de monitoreo que se instalarán en el domicilio.<br>
+	 *@param cantBotones La cantidad de botones de pánico que quiere agregar el abonado.<br>
+	 *@param movilAcompanamiento Indica si se solicita el servicio de acompañamiento móvil o no.<br>
+	 */
+	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) {
 		this.domicilio = dom;
 		this.cantCamaras = cantCamaras;
 		this.cantBotones = cantBotones;
 		this.movilAcompanamiento = movilAcompanamiento;
-		this.precio = calculaPrecio(promo);
 		this.id = ++siguienteId;
+		this.promo = null;
 	}
 
-	public Monitoreo(String dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) {
-		this.domicilio = dom;
-		this.cantCamaras = cantCamaras;
-		this.cantBotones = cantBotones;
-		this.movilAcompanamiento = movilAcompanamiento;
-		this.precio = calculaPrecio();
-		this.id = ++siguienteId;
-	}
-
-	// Template
-	public double calculaPrecio(Promocion promo) {
-		double precio = this.getPrecioBase() + this.valorServicioCamara() + this.valorServicioBoton()
-				+ this.valorServicioAcompanamiento();
-		return this.aplicarDescuento(precio, promo);
-	}
-
+	/**
+	 *Calcula el precio total de la contratación aplicando el descuento correspondiente a la promoción.<br>
+	 *@return El precio total por los servicios contratados con el descuento de la promoción aplicado.<br>
+	 */
 	public double calculaPrecio() {
 		double precio = this.getPrecioBase() + this.valorServicioCamara() + this.valorServicioBoton()
-				+ this.valorServicioAcompanamiento();
-		return precio;
+		+ this.valorServicioAcompanamiento();
+		return this.aplicarDescuento(precio, this.promo);
 	}
-
-	public abstract double aplicarDescuento(double monto, Promocion promo);
+	
+	public abstract double aplicarDescuento(double monto, IPromocion promo);
 
 	public abstract double getPrecioBase();
 
@@ -77,15 +76,19 @@ public abstract class Monitoreo {
 		return cantBotones;
 	}
 
-	public String getDomicilio() {
+	public Domicilio getDomicilio() {
 		return domicilio;
-	}
-
-	public double getPrecio() {
-		return precio;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public IPromocion getPromo() {
+		return promo;
+	}
+
+	public void setPromo(IPromocion promo) {
+		this.promo = promo;
 	}
 }

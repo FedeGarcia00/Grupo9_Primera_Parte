@@ -1,12 +1,19 @@
-package modelo;
+ package modelo;
 
-import java.util.Iterator;
-
+/**
+ *Clase que crea nuevas instancias de factura. <br>
+ *Con métodos que calculan el precio total de todos los contratos realizados por el Abonado
+ *y otro método que clona la factura solo si el Abonado es una persona fisica. <br>
+ */
 public class Factura implements IFactura {
 
     protected Abonado abonado;
     protected double precio;
-
+    
+    /**
+     *Crea una nueva factura para el abonado especificado y calcula el precio total de la misma. <br>
+     *@param abonado El abonado para el que se creará la factura. <br>
+     */
     public Factura(Abonado abonado) {
         this.abonado = abonado;
         this.precio = calculaPrecio();
@@ -19,29 +26,16 @@ public class Factura implements IFactura {
     public double getPrecio() {
         return this.precio;
     }
-
+    
     public double calculaPrecio() {
-        double precio = 0;
-        int cont = 0;
-        Iterator<Monitoreo> iterator = abonado.getListaMonitoreos().iterator(); // Si abonado es null, tira null pointer
-                                                                                // exception, hay q comprobar o tirar
-                                                                                // excepcion
-
-        while (iterator.hasNext()) {
-            Monitoreo monitoreo = iterator.next();
-            precio += monitoreo.getPrecio();
-            cont++;
-        }
-
-        String clase = abonado.getClass().getName();
-
-        if (clase.equalsIgnoreCase("personajuridica") && cont > 3) {
-            precio /= 2;
-        }
-
-        return precio;
+    	return abonado.calculaPrecio();
     }
-
+    
+    /**
+     *Crea y devuelve una copia de esta instancia de Factura. <br>
+     *@return Una copia de esta instancia de Factura. <br>
+     *@throws CloneNotSupportedException Si la clonación no es posible. <br>
+    */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Factura clonado = null;

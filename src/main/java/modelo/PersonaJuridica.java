@@ -7,4 +7,9 @@ public class PersonaJuridica extends Abonado {
 		this.dni = dni;
 	}
 
+	@Override
+	public double aplicarDescuentoCantidad(double monto, int cantidad) {
+		return cantidad < 3 ? monto : monto / 2;
+	}
+
 }

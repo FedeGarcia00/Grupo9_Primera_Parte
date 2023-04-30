@@ -43,7 +43,7 @@ public abstract class DecoratorPago implements IFactura {
 		while (iterator.hasNext()) {
 			Monitoreo monitoreo = iterator.next();
 			factura += "[" + monitoreo.getId() + "] - Direccion: " + monitoreo.getDomicilio() + " $"
-					+ monitoreo.getPrecio() + "\n";
+					+ monitoreo.calculaPrecio() + "\n";
 		}
 		factura += "Precio sin descuento: " + encapsulado.getPrecio() + "\n";
 		factura += "Precio con descuento: " + getPrecioFinal();

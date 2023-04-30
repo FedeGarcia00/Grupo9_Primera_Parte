@@ -1,7 +1,6 @@
 package modelo;
 
-public abstract class Promocion 
-{
+public interface IPromocion {
 	public abstract double getDescuentoVivienda(double monto);
 	public abstract double getDescuentoComercio(double monto);
 }

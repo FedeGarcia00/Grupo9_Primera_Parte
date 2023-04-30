@@ -1,6 +1,6 @@
 package modelo;
 
-public class FacturaFactory {
+public class FacturaFactory{
 
 	public static IFactura crearFactura(Abonado abonado, String metodoPago) {
 
@@ -15,7 +15,7 @@ public class FacturaFactory {
 			respuesta = new DecoratorPagoCheque(encapsulado);
 		else if (metodoPago.equalsIgnoreCase("efectivo"))
 			respuesta = new DecoratorPagoEfectivo(encapsulado);
-
+			
 		return respuesta;
 	}
 
