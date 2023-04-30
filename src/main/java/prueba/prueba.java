@@ -4,6 +4,7 @@ import modelo.Empresa;
 import modelo.IPromocion;
 import modelo.Monitoreo;
 import modelo.NoExisteAbonadoException;
+import modelo.NoExisteFacturaAbonadoException;
 import modelo.NoHayServiciosException;
 import modelo.PromoDorada;
 import modelo.PromoPlatino;
@@ -71,7 +72,8 @@ public class prueba {
             System.out.println(e.getMensaje());
         } catch (CloneNotSupportedException e) {
             System.out.println(e.getMessage());
+        } catch (NoExisteFacturaAbonadoException e) {
+            System.out.println(e.getMessage());
         }
-
     }
 }

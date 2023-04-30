@@ -79,14 +79,14 @@ public class Empresa {
 	 * @return La factura correspondiente al dni del abonado, o null si no se
 	 *         encuentra ninguna factura.<br>
 	 */
-	public IFactura getFactura(String dni) {
+	public IFactura getFactura(String dni) throws NoExisteFacturaAbonadoException {
 
 		for (IFactura factura : listaFacturas) {
 			if (factura.getAbonado().getDni().equalsIgnoreCase(dni)) {
 				return factura;
 			}
 		}
-		return null;
+		throw new NoExisteFacturaAbonadoException(dni);
 	}
 
 	public Abonado getAbonado(String dni) throws NoExisteAbonadoException {
