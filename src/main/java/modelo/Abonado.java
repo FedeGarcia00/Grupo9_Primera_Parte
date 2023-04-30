@@ -3,6 +3,12 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Clase que crea y agrega un monitoreo nuevo a la lista de monitoreos de un
+ * abonado. <br>
+ * Cuenta con un m�todo que devuelve el total a pagar por el abonado en base a
+ * todos los monitoreos contratados por este. <br>
+ */
 public abstract class Abonado implements Cloneable {
 	protected String nombre;
 	protected String dni;
@@ -14,6 +20,22 @@ public abstract class Abonado implements Cloneable {
 		this.dni = dni;
 	}
 
+	/**
+	 * Agrega un nuevo monitoreo a la lista de monitoreos del abonado.<br>
+	 * 
+	 * @param domicilio           Objeto de la clase Domicilio que representa el
+	 *                            domicilio del monitoreo contratado.<br>
+	 * @param cantCamaras         La cantidad de c�maras a incluir en el
+	 *                            monitoreo.<br>
+	 * @param cantBotones         La cantidad de botones de p�nico a incluir en el
+	 *                            monitoreo.<br>
+	 * @param movilAcompanamiento Un booleano que indica si se incluir� el servicio
+	 *                            de acompa�amiento.<br>
+	 * @param servicio            Una cadena que indica el tipo de servicio
+	 *                            contratado.<br>
+	 * @return Un objeto de la clase Monitoreo que representa el nuevo monitoreo
+	 *         agregado a la lista.<br>
+	 */
 	public Monitoreo agregarMonitoreo(Domicilio domicilio, int cantCamaras, int cantBotones,
 			boolean movilAcompanamiento, String servicio)
 			throws AbonadoNoPoseeDomicilioException, YaExisteMonitoreoException {
@@ -31,12 +53,11 @@ public abstract class Abonado implements Cloneable {
 	public abstract double aplicarDescuentoCantidad(double monto, int cantidad);
 
 	/**
-	 * Calcula el precio total de la contrataci�n para el abonado actual en base a
-	 * todos los Monitoreos que contrato. <br>
-	 * Si el abonado es una Persona Jur�dica y tiene m�s de tres Monitoreos
-	 * contratados, se aplica un descuento del 50% al precio total. <br>
+	 * Calcula el precio total de los monitoreos del abonado teniendo en cuenta un
+	 * posible descuento. <br>
 	 * 
-	 * @return El precio total de la contrataci�n para el abonado actual.<br>
+	 * @return el precio total de los monitoreos del abonado con descuento si es que
+	 *         le corresponde.<br>
 	 */
 	public double calculaPrecio() {
 		double precio = 0;

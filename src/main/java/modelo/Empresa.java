@@ -110,6 +110,16 @@ public class Empresa {
 		throw new NoExisteFacturaAbonadoException(dni);
 	}
 
+	/**
+	 * Retorna el objeto Abonado correspondiente al dni ingresado. <br>
+	 * 
+	 * @param dni El n�mero de documento del abonado. <br>
+	 *            <b>Pre: </b> El parametrodni no debe ser vacio o nulo. Debe ser un
+	 *            valor valido. <br>
+	 *            <b>Post: </b> Devolve el abonado correspondiente al dni. <br>
+	 * @return El objeto Abonado correspondiente al dni ingresado, o null si no se
+	 *         encuentra<br>
+	 */
 	public Abonado getAbonado(String dni) throws NoExisteAbonadoException {
 
 		Abonado abonadoEncontrado = null;

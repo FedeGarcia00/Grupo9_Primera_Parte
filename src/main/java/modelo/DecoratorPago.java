@@ -30,10 +30,6 @@ public abstract class DecoratorPago implements IFactura {
 
 	@Override
 	public String toString() {
-		// Nombre abonado y dni
-		// medio de pago
-		// For eac precio de cada servicio,
-		// precio total con y sin descuento
 		Abonado abonado = getAbonado();
 		String factura = "";
 		Iterator<Monitoreo> iterator = abonado.getListaMonitoreos().iterator();
