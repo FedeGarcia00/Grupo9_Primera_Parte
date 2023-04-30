@@ -27,13 +27,13 @@ public class prueba {
         Domicilio d3 = new Domicilio("San Juan", 3487);
 
         // Prueba de agregar abonados
-        empresa.agregarAbonado("PersonaJuridica", "Juancito", "20456789");
+        empresa.agregarAbonado("PersonaJuridica", "Juancito S.A", "20456789");
         empresa.agregarAbonado("PersonaFisica", "Pablito", "30123456");
 
         try {
 
             // Abonado de tipo personaFisica
-            Abonado abonado = empresa.getAbonado("30123456");
+            Abonado abonado = empresa.getAbonado("20456789");
             // Abonado de tipo personaJuridica para probar que no se puede clonar
             // Abonado abonado = empresa.getAbonado("20456789");
             abonado.agregaDomicilio(d1);

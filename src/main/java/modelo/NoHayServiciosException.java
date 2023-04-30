@@ -9,7 +9,7 @@ public class NoHayServiciosException extends Exception {
     }
 
     public String getMensaje() {
-        return "No hay ningun servicio asociado al abonado" + this.abonado.getNombre() + "con DNI "
+        return "No hay ningun servicio asociado al abonado " + this.abonado.getNombre() + " con DNI "
                 + this.abonado.getDni();
     }
 

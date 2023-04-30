@@ -43,8 +43,19 @@ public class Empresa {
 	 *               abonados de la empresa.<br>
 	 */
 	public void agregarAbonado(String tipo, String nombre, String dni) {
+		assert tipo != null && !tipo.isEmpty() : "El tipo de abonado no puede ser nulo o vacío";
+		assert (tipo.equals("personajuridica") || tipo.equals("personafisica")) : "Tipo de abonado inválido";
+		assert (nombre != null && !nombre.isEmpty()) : "El nombre no puede ser nulo o vacío";
+		assert (dni != null && !dni.isEmpty()) : "El DNI no puede ser nulo o vacío";
+
+		int cantidadAntes = listaAbonados.size();
+
 		Abonado abonado = AbonadoFactory.crearAbonado(tipo, nombre, dni);
 		listaAbonados.add(abonado);
+
+		int cantidadDespues = listaAbonados.size();
+
+		assert cantidadAntes + 1 == cantidadDespues : "No se agregó un abonado a la lista";
 	}
 
 	/**
@@ -62,9 +73,18 @@ public class Empresa {
 	 */
 	public void newFactura(String dni, String metodoPago) throws NoExisteAbonadoException, NoHayServiciosException {
 		// get abonado con dni
+		assert (dni != null && !dni.isEmpty()) : "El DNI no puede ser nulo o vacío";
+		assert metodoPago != null && !metodoPago.isEmpty() : "El método de pago no puede ser nulo o vacío";
+		assert metodoPago.equals("tarjeta") || metodoPago.equals("cheque") || metodoPago.equals("efectivo")
+				: "El método de pago debe ser 'tarjeta', 'cheque' o 'efectivo'";
+
+		int cantidadAntes = listaFacturas.size();
 		Abonado abonado = getAbonado(dni);
 		IFactura factura = FacturaFactory.crearFactura(abonado, metodoPago);
 		listaFacturas.add(factura);
+		int cantidadDespues = listaFacturas.size();
+
+		assert cantidadAntes + 1 == cantidadDespues : "No se creó una factura nueva y se agregó a la lista de facturas";
 	}
 
 	/**
@@ -80,6 +100,7 @@ public class Empresa {
 	 *         encuentra ninguna factura.<br>
 	 */
 	public IFactura getFactura(String dni) throws NoExisteFacturaAbonadoException {
+		assert dni != null && !dni.isEmpty() : "El DNI no puede ser nulo o vacío";
 
 		for (IFactura factura : listaFacturas) {
 			if (factura.getAbonado().getDni().equalsIgnoreCase(dni)) {
