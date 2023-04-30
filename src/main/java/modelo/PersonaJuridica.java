@@ -3,8 +3,7 @@ package modelo;
 public class PersonaJuridica extends Abonado {
 
 	public PersonaJuridica(String nombre, String dni) {
-		this.nombre = nombre;
-		this.dni = dni;
+		super(nombre, dni);
 	}
 
 	@Override
@@ -12,4 +11,7 @@ public class PersonaJuridica extends Abonado {
 		return cantidad < 3 ? monto : monto / 2;
 	}
 
+	public Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException("Los abonados de tipo persona juridica no son clonables");
+	}
 }

@@ -60,7 +60,7 @@ public class Empresa {
 	 *                   <b>Post: </b> Se crea una factra nueva correspondiente al
 	 *                   dni especificado y es agregada a la lista de facturas.<br>
 	 */
-	public void newFactura(String dni, String metodoPago) {
+	public void newFactura(String dni, String metodoPago) throws NoExisteAbonadoException, NoHayServiciosException {
 		// get abonado con dni
 		Abonado abonado = getAbonado(dni);
 		IFactura factura = FacturaFactory.crearFactura(abonado, metodoPago);
@@ -89,15 +89,17 @@ public class Empresa {
 		return null;
 	}
 
-	public Abonado getAbonado(String dni) {
-		Abonado abonadoEncontrado = null;
+	public Abonado getAbonado(String dni) throws NoExisteAbonadoException {
 
+		Abonado abonadoEncontrado = null;
 		for (Abonado abonado : listaAbonados) {
 			if (abonado.getDni().equalsIgnoreCase(dni)) {
 				abonadoEncontrado = abonado;
 				break;
 			}
 		}
+		if (abonadoEncontrado == null)
+			throw new NoExisteAbonadoException(dni);
 		return abonadoEncontrado;
 	}
 
