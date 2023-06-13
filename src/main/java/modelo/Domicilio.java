@@ -1,32 +1,48 @@
 package modelo;
 
-public class Domicilio {
-	private String calle;
-	private int numero;
+import java.io.Serializable;
 
-	public Domicilio(String nombre, int nro) {
-		this.calle = nombre;
-		this.numero = nro;
-	}
+public class Domicilio implements Serializable {
 
-	public String getNombre() {
-		return calle;
-	}
+  private String calle;
+  private int numero;
 
-	public int getNro() {
-		return numero;
-	}
+  public Domicilio(String nombre, int nro) {
+    this.calle = nombre;
+    this.numero = nro;
+  }
 
-	@Override
-	public boolean equals(Object object) {
-		Domicilio domicilio = (Domicilio) object;
+  public String getCalle() {
+    return calle;
+  }
 
-		return this.calle.trim().equalsIgnoreCase(domicilio.calle.trim()) && this.numero == domicilio.numero;
-	}
+  public int getNro() {
+    return numero;
+  }
 
-	@Override
-	public String toString() {
-		return calle + " " + numero;
-	}
+  @Override
+  public boolean equals(Object object) {
+    Domicilio domicilio = (Domicilio) object;
 
+    return (
+      this.calle.trim().equalsIgnoreCase(domicilio.calle.trim()) &&
+      this.numero == domicilio.numero
+    );
+  }
+
+  @Override
+  public String toString() {
+    return calle + " " + numero;
+  }
+
+  public Domicilio clone() {
+    Domicilio domicilioClonado = null;
+    try {
+      domicilioClonado = (Domicilio) super.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException();
+    }
+
+    return domicilioClonado;
+  }
 }
