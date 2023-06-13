@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 /**
  * Clase que crea instancias de Monitoreo cuando se aplica alguna promici�n o
  * cuando no las hay. <br>
@@ -7,105 +9,136 @@ package modelo;
  * descuento de la promoci�n
  * o sin aplicar el descuento. <br>
  */
-public abstract class Monitoreo implements Cloneable {
-	private static final double PRECIO_CAMARA = 3000;
-	private static final double PRECIO_BOTON = 2000;
-	private static final double PRECIO_ACOMPANAMIENTO = 7500;
+public abstract class Monitoreo implements Cloneable, Serializable {
 
-	private static int siguienteId = 0;
+  private static final double PRECIO_CAMARA = 3000;
+  private static final double PRECIO_BOTON = 2000;
+  private static final double PRECIO_ACOMPANAMIENTO = 7500;
 
-	private Domicilio domicilio;
-	private int id;
-	private int cantCamaras;
-	private int cantBotones;
-	private boolean movilAcompanamiento;
-	private IPromocion promo;
+  private static int siguienteId = 0;
 
-	/**
-	 * Crea una nueva instancia de Monitoreo con los par�metros especificados.<br>
-	 * 
-	 * @param dom                 El domicilio del abonado que estara sistema de
-	 *                            monitoreo.<br>
-	 * @param cantCamaras         La cantidad de c�maras de monitoreo que se
-	 *                            instalar�n en el domicilio.<br>
-	 * @param cantBotones         La cantidad de botones de p�nico que quiere
-	 *                            agregar el abonado.<br>
-	 * @param movilAcompanamiento Indica si se solicita el servicio de
-	 *                            acompa�amiento m�vil o no.<br>
-	 */
-	public Monitoreo(Domicilio dom, int cantCamaras, int cantBotones, boolean movilAcompanamiento) {
-		this.domicilio = dom;
-		this.cantCamaras = cantCamaras;
-		this.cantBotones = cantBotones;
-		this.movilAcompanamiento = movilAcompanamiento;
-		this.id = ++siguienteId;
-		this.promo = null;
-	}
+  private Domicilio domicilio;
+  private int id;
+  private int cantCamaras;
+  private int cantBotones;
+  private boolean movilAcompanamiento;
+  private IPromocion promo;
+  private boolean darDeBaja;
 
-	/**
-	 * Calcula el precio total de la contrataci�n aplicando el descuento
-	 * correspondiente a la promoci�n.<br>
-	 * 
-	 * @return El precio total por los servicios contratados con el descuento de la
-	 *         promoci�n aplicado.<br>
-	 */
-	public double calculaPrecio() {
-		double precio = this.getPrecioBase() + this.valorServicioCamara() + this.valorServicioBoton()
-				+ this.valorServicioAcompanamiento();
-		return this.aplicarDescuento(precio, this.promo);
-	}
+  /**
+   * Crea una nueva instancia de Monitoreo con los par�metros especificados.<br>
+   *
+   * @param dom                 El domicilio del abonado que estara sistema de
+   *                            monitoreo.<br>
+   * @param cantCamaras         La cantidad de c�maras de monitoreo que se
+   *                            instalar�n en el domicilio.<br>
+   * @param cantBotones         La cantidad de botones de p�nico que quiere
+   *                            agregar el abonado.<br>
+   * @param movilAcompanamiento Indica si se solicita el servicio de
+   *                            acompa�amiento m�vil o no.<br>
+   */
+  public Monitoreo(
+    Domicilio dom,
+    int cantCamaras,
+    int cantBotones,
+    boolean movilAcompanamiento
+  ) {
+    this.domicilio = dom;
+    this.cantCamaras = cantCamaras;
+    this.cantBotones = cantBotones;
+    this.movilAcompanamiento = movilAcompanamiento;
+    this.id = ++siguienteId;
+    this.promo = null;
+    this.darDeBaja = false;
+  }
 
-	public abstract double aplicarDescuento(double monto, IPromocion promo);
+  /**
+   * Calcula el precio total de la contrataci�n aplicando el descuento
+   * correspondiente a la promoci�n.<br>
+   *
+   * @return El precio total por los servicios contratados con el descuento de la
+   *         promoci�n aplicado.<br>
+   */
+  public double calculaPrecio() {
+    double precio =
+      this.getPrecioBase() +
+      this.valorServicioCamara() +
+      this.valorServicioBoton() +
+      this.valorServicioAcompanamiento();
+    return this.aplicarDescuento(precio, this.promo);
+  }
 
-	public abstract double getPrecioBase();
+  public abstract double aplicarDescuento(double monto, IPromocion promo);
 
-	public double valorServicioCamara() {
-		return Monitoreo.PRECIO_CAMARA * this.cantCamaras;
-	}
+  public abstract double getPrecioBase();
 
-	public double valorServicioBoton() {
-		return Monitoreo.PRECIO_BOTON * this.cantBotones;
-	}
+  public double valorServicioCamara() {
+    return Monitoreo.PRECIO_CAMARA * this.cantCamaras;
+  }
 
-	public double valorServicioAcompanamiento() {
-		return this.movilAcompanamiento ? Monitoreo.PRECIO_ACOMPANAMIENTO : 0;
-	}
+  public double valorServicioBoton() {
+    return Monitoreo.PRECIO_BOTON * this.cantBotones;
+  }
 
-	public double getPrecioCamara() {
-		return Monitoreo.PRECIO_CAMARA;
-	}
+  public double valorServicioAcompanamiento() {
+    return this.movilAcompanamiento ? Monitoreo.PRECIO_ACOMPANAMIENTO : 0;
+  }
 
-	public int getCantCamaras() {
-		return cantCamaras;
-	}
+  public double getPrecioCamara() {
+    return Monitoreo.PRECIO_CAMARA;
+  }
 
-	public double getPrecioBoton() {
-		return Monitoreo.PRECIO_BOTON;
-	}
+  public int getCantCamaras() {
+    return cantCamaras;
+  }
 
-	public int getCantBotones() {
-		return cantBotones;
-	}
+  public double getPrecioBoton() {
+    return Monitoreo.PRECIO_BOTON;
+  }
 
-	public Domicilio getDomicilio() {
-		return domicilio;
-	}
+  public int getCantBotones() {
+    return cantBotones;
+  }
 
-	public int getId() {
-		return id;
-	}
+  public Domicilio getDomicilio() {
+    return domicilio;
+  }
 
-	public IPromocion getPromo() {
-		return promo;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setPromo(IPromocion promo) {
-		this.promo = promo;
-	}
+  public IPromocion getPromo() {
+    return promo;
+  }
 
-	@Override
-	public String toString() {
-		return "Monitoreo [id= " + id + "]";
-	}
+  public void setPromo(IPromocion promo) {
+    this.promo = promo;
+  }
 
+  @Override
+  public String toString() {
+    return id + " " + domicilio.toString();
+  }
+
+  @Override
+  public Monitoreo clone() {
+    Monitoreo monitoreoClonado = null;
+
+    try {
+      monitoreoClonado = (Monitoreo) super.clone();
+      monitoreoClonado.domicilio = this.domicilio.clone();
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException();
+    }
+    return monitoreoClonado;
+  }
+
+  public void setEstadoFinDeMes(boolean b) {
+    this.darDeBaja = b;
+  }
+
+  public boolean getDarDeBaja() {
+    return this.darDeBaja;
+  }
 }
